@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: stock-dashboard-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: ALLOWED_ORIGINS
+        # 改成你的 GitHub Pages 網址，多個用逗號分隔
+        value: https://alan0257.github.io
+      - key: FIREBASE_SERVICE_ACCOUNT_JSON
+        # 這個在 Render Dashboard 手動貼上，不要寫在這裡
+        sync: false
